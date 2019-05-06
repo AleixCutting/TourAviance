@@ -14,7 +14,7 @@
 
 <title></title>
 
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
@@ -30,19 +30,6 @@
 <script src="site_libs/vis-4.16.1/vis.min.js"></script>
 <link href="site_libs/timeline-0.4/timevis.css" rel="stylesheet" />
 <script src="site_libs/timevis-binding-0.4/timevis.js"></script>
-<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="site_libs/leaflet-binding-2.0.2/leaflet.js"></script>
-<script src="site_libs/leaflet-providers-1.1.17/leaflet-providers.js"></script>
-<script src="site_libs/leaflet-providers-plugin-2.0.2/leaflet-providers-plugin.js"></script>
-<link href="site_libs/leaflet-easybutton-1.3.1/easy-button.css" rel="stylesheet" />
-<script src="site_libs/leaflet-easybutton-1.3.1/easy-button.js"></script>
-<script src="site_libs/leaflet-easybutton-1.3.1/EasyButton-binding.js"></script>
-<link href="site_libs/ionicons-2.0.1/ionicons.min.css" rel="stylesheet" />
 
 
 
@@ -133,11 +120,6 @@ Aviance
 </div>
 </div>
 <script type="application/json" data-for="htmlwidget-21e6a1239bd17cb7241b">{"x":{"items":[{"id":"1","start":"2019-05-19 15:00:00","content":"Hotel departure to Montjuic","group":"3","type":"box","style":"background-color:#FF9933;"},{"id":"2","start":"2019-05-19 15:15:00","content":"Montjuic visit","group":"3","type":"box","style":"background-color:#FF9933;"},{"id":"3","start":"2019-05-19 17:00:00","content":"Sagrada Familia visit","group":"3","type":"box","style":"background-color:#FF9933;"},{"id":"4","start":"2019-05-19 17:30:00","content":"Park Güell visit","group":"3","type":"box","style":"background-color:#FF9933;"},{"id":"5","start":"2019-05-19 19:00:00","content":"End of the tour","group":"3","type":"box","style":"background-color:#FF9933;"}],"groups":[{"id":"1","content":"Morning"},{"id":"2","content":"Lunch"},{"id":"3","content":"Afternoon"},{"id":"4","content":"Diner"}],"showZoom":true,"zoomFactor":0.2,"fit":true,"options":[],"height":300,"api":[{"method":"setOptions","options":{"orientation":"top","align":"left"}}]},"evals":[],"jsHooks":[]}</script>
-</div>
-<div id="map" class="section level3">
-<h3><strong>Map</strong></h3>
-<div id="htmlwidget-e24d97725efa85cd7f0e" style="width:768px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e24d97725efa85cd7f0e">{"x":{"options":{"minZoom":14,"maxZoom":18,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"dragging":true},"calls":[{"method":"addProviderTiles","args":["Esri",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[41.404441,41.364763,41413319],[2.174861,2.154233,2.15308],5,null,null,{"interactive":true,"className":"","stroke":true,"color":["#C90089","#C90089","#C90089"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#C90089","#C90089","#C90089"],"fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addPopups","args":[[41.404441,41.364763,41413319],[2.174861,2.154233,2.15308],["<b>La Sagrada Familia<\/b>","<b>Montjuic<\/b>","<b>Park Güell<\/b>"],null,null,{"maxWidth":300,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},{"method":"addLegend","args":[{"colors":["#C90089"],"labels":["Accom"],"na_color":null,"na_label":"NA","opacity":0.5,"position":"bottomright","type":"factor","title":null,"extra":null,"layerId":null,"className":"info legend","group":null}]},{"method":"addEasyButton","args":[{"icon":"ion-arrow-shrink","title":"Reset View","onClick":"function(btn, map){ map.setView(map._initialCenter, map._initialZoom); }","position":"topleft"}]}],"limits":{"lat":[41.364763,41413319],"lng":[2.15308,2.174861]}},"evals":["calls.4.args.0.onClick"],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (function(el, x){ var map = this; map._initialCenter = map.getCenter(); map._initialZoom = map.getZoom();}).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
 </div>
 <div id="city-tour" class="section level3">
 <h3><strong>CITY TOUR</strong></h3>

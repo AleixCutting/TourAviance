@@ -68,41 +68,6 @@ tl %>% setOptions(list(orientation = "top", align = "left"))
 
 ```
 
-### **Map**
-
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-
-library(leaflet)
-library(stringr)
-library(ggmap)
-library(readxl)
-library(dplyr)
-library(leaflet.extras)
-library(shiny)
-
-coordinates <- read_excel("timeline.xlsx", 
-    sheet = "Sheet3", col_types = c("text", 
-        "text", "numeric", "numeric", "text", 
-        "text"))
-
-coordinates$Category <- factor(coordinates$Category)
-
-m <- coordinates %>% 
-  leaflet(options = leafletOptions(dragging = TRUE,
-  minZoom = 14, maxZoom = 18)) %>% 
-  addProviderTiles("Esri") %>% 
-  setView(lng = 2.1687300, lat = 41.3863900, zoom = 14) 
-
-pal <- colorFactor(palette = c("red","blue"),
-      levels = coordinates$Category)
-
-m %>% clearBounds() %>% 
-  addCircleMarkers(radius = 5, color = ~pal(Category)) %>% 
-  addPopups(popup = paste0("<b>",coordinates$Location,"</b>")) %>% 
-  addLegend(position = "bottomright", pal = pal, 
-  values = coordinates$Category) %>% addResetMapButton()
-
-```
 
 ### **CITY TOUR** 
 
