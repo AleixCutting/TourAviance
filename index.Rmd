@@ -1,0 +1,175 @@
+---
+title: <br><br><center>Aviance<center>
+author: "Cutting Edge Events"
+date: "`r Sys.Date()`"
+output:
+  rmdformats::readthedown:
+    highlight: kate
+---
+
+<script> 
+    $(document).ready(function() { 
+    $head = $('#header'); 
+    $head.prepend('<A href = https://www.cuttingedge-events.com><img src ="LOGO.png" width="150" vspace="50" align="right"></A>') 
+    }); 
+</script> 
+
+```{r knitr_init, echo=FALSE, cache=FALSE, message= FALSE,warning=FALSE}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=750)
+```
+
+
+```{r echo=FALSE, message=FALSE,warning=FALSE}
+library(readxl)
+library(shiny)
+library(dplyr)
+library(knitr)
+```
+
+
+## Programme
+
+### **Programme Overview and timeline**
+
+```{r echo=FALSE, message=FALSE,warning=FALSE}
+library(timevis)
+library(dplyr)
+library(readxl)
+
+timeline <- read_excel("timeline.xlsx", sheet = "Sheet1", 
+    col_types = c("date", 
+        "text", "text", "numeric", "text", 
+        "text"))
+
+data <- data.frame( id = 1:length(timeline$start),
+                    start = as.POSIXlt(timeline$start),
+                    content = timeline$content,
+                    group = timeline$group,
+                    type = "box",
+                    style = "background-color:#FF9933;")
+
+groups = data.frame(id = 1:4, content = c("Morning", "Lunch", "Afternoon", "Diner"))
+
+tl <- timevis(data, groups, showZoom = TRUE, zoomFactor = 0.2, fit = TRUE, width = '100%', height = 300)
+
+tl %>% setOptions(list(orientation = "top", align = "left"))
+
+```
+
+### **Map**
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+
+library(leaflet)
+library(stringr)
+library(ggmap)
+library(readxl)
+library(dplyr)
+library(leaflet.extras)
+library(shiny)
+
+coordinates <- read_excel("timeline.xlsx", 
+    sheet = "Sheet3", col_types = c("text", 
+        "text", "numeric", "numeric", "text", 
+        "text"))
+
+coordinates$Category <- factor(coordinates$Category)
+
+m <- coordinates %>% 
+  leaflet(options = leafletOptions(dragging = TRUE,
+  minZoom = 14, maxZoom = 18)) %>% 
+  addProviderTiles("Esri") %>% 
+  setView(lng = 2.1687300, lat = 41.3863900, zoom = 14) 
+
+pal <- colorFactor(palette = c("red","blue"),
+      levels = coordinates$Category)
+
+m %>% clearBounds() %>% 
+  addCircleMarkers(radius = 5, color = ~pal(Category)) %>% 
+  addPopups(popup = paste0("<b>",coordinates$Location,"</b>")) %>% 
+  addLegend(position = "bottomright", pal = pal, 
+  values = coordinates$Category) %>% addResetMapButton()
+
+```
+
+### **CITY TOUR** 
+
+We propose to discover Barcelona from the best spots in the city in a sightseeing tour by bus. 
+
+This tour will go through Montjuic mountain, Sagrada Familia's monument and Park Güell, one of the most emblemathic parks in Barcelona that welcomes milions of tourist every year.
+
+So the tour will be composed of 3 main places.
+
+ **Duration:** 4 hours. From 15:00 to 19:00
+ 
+ **Location:** Barcelona city centre
+ 
+ **Included:** 1 English speaking guide each 15-18 pax, bus at disposal and tickets entrance to Park Güell
+
+#### **Montjuic Mountain**
+
+This incredible, Olympic-inspired district is located in the southeast of Barcelona boasts attractions which centre on the Parc de Montjuïc, an area complete with museums, a castle, and a fantastic city views, as well as a plethora of things to see.
+
+As we said, there are a plenty of things to visit there and our guide will show it to the guests.
+Montjuic mountain boasts a fantastic city views, where guests will be able to enjoy as the guide will take to the correct spot. Guests will feel peaceful.
+
+Also, they will visit the "Font Magica" an ancient fountain and waterfalls built in 1929, which is actually the most representative in the city. At nights displays lights and music combined with water acrobatics in a truly magical show.
+
+The Montjuic Castle and Nacional Art Museum of Catalonia will be visited as well.
+
+After visiting montjuic, the group will go directly to Sagrada Familia.
+
+
+<img src = "http://www.sehacecaminoalandar.com/wp-content/uploads/Vistas-Castillo-Montjuic.jpg" width="720">
+
+<img src = "https://www.saba.es/documents/31936/482148/pi022-1600x900.jpg/ebfce7ef-2a6a-2426-829f-0823fe623340?version=1.0&t=1528897230705&imagePreview=1" width="720">
+
+
+#### **SAGRADA FAMILIA**
+
+Sagrada Familia is the most representative monument in Barcelona, even Catalonia.
+This emblemathic building is an Expioatori Temple. 
+Building of La Sagrada Familia began in 1882 and is still in construction.
+Due to the high demand of tickets it won't be possible to through the interior, tickets are already sold out. However, the bus will drop the group off close to the monument (5 minutes by walking as maximum). Our guide will accompanny the group to the environs of the monument to see how awe-inspiring is. 
+
+After taking several pictures and admire it, they will fo to Park Güell. 
+
+<img src = "https://images.musement.com/cover/0002/37/thumb_136083_cover_header.jpeg?w=1200&h=630&q=60&fit=crop" width="720">
+
+
+#### **PARK GÜELL**
+
+Park Güell is the most colorful place of Barcelona! Is the most visited park in the world and it was built between 1900 and 1914.
+
+Guests will go through the park as there are still tickets available for those dates. Our guide will show them the most representative spots inside it and the meaning of each one. Also, inside in the park you will find the Gaudí musemu, a house with a pinnacle. It's decorated with furniture and objects brawin by the artist. Anotnio Gaudí, the artists, spent more than 20 years of his life in this house!
+
+The bus will drop the people in the park and will be waiting in the parking, just few meters away from the entrance. 
+After the visit, the froup will go directly to the restaurant because of the dinner. We higly recommend you to go to a restaurant walking distance frmo the hotel, as the park is located on the top of a hill and there are no good restaurants around. 
+
+<img src = "https://www.discoverwalks.com/blog/wp-content/uploads/2015/07/barcelona-city-big.jpg" width="720">
+
+<img src = "https://erasmusbarcelona.com/wp-content/uploads/2017/03/passeig-de-las-palmeras-600x445.jpg" width="720">
+
+*****
+
+
+## Terms & Conditions
+  
+  * No reservation has been done. Availability upon request.
+  
+*****
+
+
+
